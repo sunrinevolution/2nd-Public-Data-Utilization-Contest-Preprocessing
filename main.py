@@ -4,13 +4,11 @@ import pandas as pd
 
 # 거소·선상투표, 관외사전투표, 국외부재자투표 수는 지역 도서량에 따른 투표에 연관되어있지 않기 때문에 드랍
 
-
-
-# pd.read_excel('./data/vote/지역구/9경기/개표상황(투표구별)')
+# pd.read_excel('./data/지역구/9경기/개표상황(투표구별)')
 
 # 구로
-gr_gab = pd.read_excel('./data/vote/지역구/1서울/개표상황(투표구별)_구로구갑.xlsx')
-gr_uel = pd.read_excel('./data/vote/지역구/1서울/개표상황(투표구별)_구로구을.xlsx')
+gr_gab = pd.read_excel('./data/지역구/1서울/개표상황(투표구별)_구로구갑.xlsx')
+gr_uel = pd.read_excel('./data/지역구/1서울/개표상황(투표구별)_구로구을.xlsx')
 
 # gr_dataframe = pd.concat([gr_gab, gr_uel])
 
@@ -48,29 +46,29 @@ gr_gab = gr_gab.drop(index=[2, 3])
 print(gr_gab.head)
 
 # # 광주
-# gj_gab = pd.read_excel('./data/vote/지역구/9경기/개표상황(투표구별)_광주시갑.xlsx')
-# gj_uel = pd.read_excel('./data/vote/지역구/9경기/개표상황(투표구별)_광주시을.xlsx')
+# gj_gab = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_광주시갑.xlsx')
+# gj_uel = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_광주시을.xlsx')
 
 # gj_dataframe = pd.concat([gj_gab, gj_uel])
 
 # # 하남
 
-# hn_dataframe = pd.read_excel('./data/vote/지역구/9경기/개표상황(투표구별)_하남시.xlsx')
+# hn_dataframe = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_하남시.xlsx')
 
 # # 이천
 
-# ic_dataframe = pd.read_excel('./data/vote/지역구/9경기/개표상황(투표구별)_이천시.xlsx')
+# ic_dataframe = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_이천시.xlsx')
 
 # # 의정부
 
-# ijb_gab = pd.read_excel('./data/vote/지역구/9경기/개표상황(투표구별)_의정부시갑.xlsx')
-# ijb_uel = pd.read_excel('./data/vote/지역구/9경기/개표상황(투표구별)_의정부시을.xlsx')
+# ijb_gab = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_의정부시갑.xlsx')
+# ijb_uel = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_의정부시을.xlsx')
 
 # ijb_dataframe = pd.concat([ijb_gab, ijb_uel])
 
 # # 양주
 
-# yj_dataframe = pd.read_excel('./data/vote/지역구/9경기/개표상황(투표구별)_양주시.xlsx')
+# yj_dataframe = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_양주시.xlsx')
 
 # # save to csv
 
