@@ -45,7 +45,7 @@ def process_dataframe(df: DataFrame) -> DataFrame:
 
   df_dataset.columns = [*list(df_column.reset_index().drop(columns=['index'])[0])]
 
-  df_dataset['취소표'] = df_dataset['무효 투표수'].add(df_dataset['기권수'])
+  # df_dataset['취소표'] = df_dataset['무효 투표수'].add(df_dataset['기권수'])
 
   df_dataset = df_dataset.drop(columns=['무효 투표수', '기권수'])
 
