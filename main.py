@@ -91,9 +91,6 @@ hn_dataframe = pd.read_excel('./data/지역구/9경기/개표상황(투표구별
 
 hn_dataset = process_dataframe(hn_dataframe)
 
-for index, item in enumerate(hn_dataset['읍면동명']):
-  hn_dataset['읍면동명'][index] = item[0:len(item)//2]
-
 hn_dataset.index = hn_dataset['읍면동명']
 
 hn_dataset = hn_dataset.drop(columns=['읍면동명'])
@@ -104,9 +101,6 @@ hn_dataset = hn_dataset.drop(columns=['읍면동명'])
 ic_dataframe = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_이천시.xlsx')
 
 ic_dataset = process_dataframe(ic_dataframe)
-
-for index, item in enumerate(ic_dataset['읍면동명']):
-  ic_dataset['읍면동명'][index] = item[0:len(item)//2]
 
 ic_dataset.index = ic_dataset['읍면동명']
 
@@ -135,9 +129,6 @@ ijb_dataset = ijb_dataset.drop(columns=['읍면동명'])
 yj_dataframe = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_양주시.xlsx')
 
 yj_dataset = process_dataframe(yj_dataframe)
-
-for index, item in enumerate(yj_dataset['읍면동명']):
-  yj_dataset['읍면동명'][index] = item[0:len(item)//2]
 
 yj_dataset.index = yj_dataset['읍면동명']
 
