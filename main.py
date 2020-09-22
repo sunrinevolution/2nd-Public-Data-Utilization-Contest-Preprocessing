@@ -1,3 +1,4 @@
+from operator import index
 import pandas as pd
 from pandas.core.frame import DataFrame as DataFrame
 
@@ -8,11 +9,10 @@ from pandas.core.frame import DataFrame as DataFrame
 # pd.read_excel('./data/지역구/9경기/개표상황(투표구별)')
 
 def process_dataframe(df: DataFrame) -> DataFrame:
-  df = df.drop(index=[0, 1, 4, len(df)-1], columns=['개표상황(투표구별)'])
+  df = df.drop(index=[0, 1, 4, len(df)-1])
 
   df_member_df = df.loc[3]
   df_member_df = df_member_df.dropna()
-
 
   df_member_list = list()
 
@@ -43,9 +43,13 @@ def process_dataframe(df: DataFrame) -> DataFrame:
 
   df_column = pd.concat([df_column, pd.DataFrame(["무효 투표수", "기권수"])])
 
-  df_dataset.columns = df_column
+  df_dataset.columns = [*list(df_column.reset_index().drop(columns=['index'])[0])]
 
-  print(df_dataset.head(10))
+  df_dataset['취소표'] = df_dataset['무효 투표수'].add(df_dataset['기권수'])
+
+  df_dataset = df_dataset.drop(columns=['무효 투표수', '기권수'])
+
+  df_dataset = df_dataset.drop(index=range(5, len(df_dataset)), columns=['투표구명'])
 
   return df_dataset
 
@@ -53,43 +57,98 @@ def process_dataframe(df: DataFrame) -> DataFrame:
 gr_gab = pd.read_excel('./data/지역구/1서울/개표상황(투표구별)_구로구갑.xlsx')
 gr_uel = pd.read_excel('./data/지역구/1서울/개표상황(투표구별)_구로구을.xlsx')
 
-# gr_gab_dataset = process_dataframe(gr_gab)
+gr_gab_dataset = process_dataframe(gr_gab)
 gr_uel_dataset = process_dataframe(gr_uel)
 
-# gj_dataframe = gr_gab_dataset.add(gr_uel_dataset)
+gr_dataset = gr_gab_dataset.add(gr_uel_dataset, fill_value=0)
 
-# print(gj_dataframe.head(10))
+for index, item in enumerate(gr_dataset['읍면동명']):
+  gr_dataset['읍면동명'][index] = item[0:len(item)//2]
 
-# # 광주
-# gj_gab = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_광주시갑.xlsx')
-# gj_uel = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_광주시을.xlsx')
+gr_dataset.index = gr_dataset['읍면동명']
 
-# gj_dataframe = pd.concat([gj_gab, gj_uel])
+gr_dataset = gr_dataset.drop(columns=['읍면동명'])
 
-# # 하남
+# 광주
+gj_gab = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_광주시갑.xlsx')
+gj_uel = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_광주시을.xlsx')
 
-# hn_dataframe = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_하남시.xlsx')
+gj_gab_dataset = process_dataframe(gj_gab)
+gj_uel_dataset = process_dataframe(gj_uel)
 
-# # 이천
+gj_dataset = gj_gab_dataset.add(gj_uel_dataset, fill_value=0)
 
-# ic_dataframe = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_이천시.xlsx')
+for index, item in enumerate(gj_dataset['읍면동명']):
+  gj_dataset['읍면동명'][index] = item[0:len(item)//2]
 
-# # 의정부
+gj_dataset.index = gj_dataset['읍면동명']
 
-# ijb_gab = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_의정부시갑.xlsx')
-# ijb_uel = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_의정부시을.xlsx')
+gj_dataset = gj_dataset.drop(columns=['읍면동명'])
 
-# ijb_dataframe = pd.concat([ijb_gab, ijb_uel])
+# 하남
 
-# # 양주
+hn_dataframe = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_하남시.xlsx')
 
-# yj_dataframe = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_양주시.xlsx')
+hn_dataset = process_dataframe(hn_dataframe)
 
-# # save to csv
+for index, item in enumerate(hn_dataset['읍면동명']):
+  hn_dataset['읍면동명'][index] = item[0:len(item)//2]
 
-# gr_dataframe.to_csv('./data/vote_preprocessed/vote_guro.csv')
-# gj_dataframe.to_csv('./data/vote_preprocessed/vote_gwangju.csv')
-# hn_dataframe.to_csv('./data/vote_preprocessed/vote_hanam.csv')
-# ic_dataframe.to_csv('./data/vote_preprocessed/vote_icheon.csv')
-# ijb_dataframe.to_csv('./data/vote_preprocessed/vote_uijeongbu.csv')
-# yj_dataframe.to_csv('./data/vote_preprocessed/vote_yangju.csv')
+hn_dataset.index = hn_dataset['읍면동명']
+
+hn_dataset = hn_dataset.drop(columns=['읍면동명'])
+
+
+# 이천
+
+ic_dataframe = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_이천시.xlsx')
+
+ic_dataset = process_dataframe(ic_dataframe)
+
+for index, item in enumerate(ic_dataset['읍면동명']):
+  ic_dataset['읍면동명'][index] = item[0:len(item)//2]
+
+ic_dataset.index = ic_dataset['읍면동명']
+
+ic_dataset = ic_dataset.drop(columns=['읍면동명'])
+
+# 의정부
+
+ijb_gab = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_의정부시갑.xlsx')
+ijb_uel = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_의정부시을.xlsx')
+
+ijb_gab_dataset = process_dataframe(ijb_gab)
+ijb_uel_dataset = process_dataframe(ijb_uel)
+
+ijb_dataset = ijb_gab_dataset.add(ijb_uel_dataset, fill_value=0)
+
+for index, item in enumerate(ijb_dataset['읍면동명']):
+  ijb_dataset['읍면동명'][index] = item[0:len(item)//2]
+
+ijb_dataset.index = ijb_dataset['읍면동명']
+
+ijb_dataset = ijb_dataset.drop(columns=['읍면동명'])
+
+
+# 양주
+
+yj_dataframe = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_양주시.xlsx')
+
+yj_dataset = process_dataframe(yj_dataframe)
+
+for index, item in enumerate(yj_dataset['읍면동명']):
+  yj_dataset['읍면동명'][index] = item[0:len(item)//2]
+
+yj_dataset.index = yj_dataset['읍면동명']
+
+yj_dataset = yj_dataset.drop(columns=['읍면동명'])
+
+
+# save to csv
+
+gr_dataset.to_csv('./data/preprocessed/vote_guro.csv', encoding='utf-8-sig')
+gj_dataset.to_csv('./data/preprocessed/vote_gwangju.csv')
+hn_dataset.to_csv('./data/preprocessed/vote_hanam.csv')
+ic_dataset.to_csv('./data/preprocessed/vote_icheon.csv')
+ijb_dataset.to_csv('./data/preprocessed/vote_uijeongbu.csv')
+yj_dataset.to_csv('./data/preprocessed/vote_yangju.csv')
