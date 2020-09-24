@@ -69,6 +69,8 @@ gr_dataset.index = gr_dataset['읍면동명']
 
 gr_dataset = gr_dataset.drop(columns=['읍면동명'])
 
+gr_dataset = gr_dataset.drop(columns=['무효 투표수', '기권수'])
+
 # 광주
 gj_gab = pd.read_excel('C:\\Users\\wayma\\OneDrive\\문서\\GitHub\\2nd-Public-Data-Utilization-Contest-Preprocessing\\20vote\\지역구\\9경기\\개표상황(투표구별)_광주시갑.xlsx')
 gj_uel = pd.read_excel('C:\\Users\\wayma\\OneDrive\\문서\\GitHub\\2nd-Public-Data-Utilization-Contest-Preprocessing\\20vote\\지역구\\9경기\\개표상황(투표구별)_광주시을.xlsx')
@@ -85,6 +87,8 @@ gj_dataset.index = gj_dataset['읍면동명']
 
 gj_dataset = gj_dataset.drop(columns=['읍면동명'])
 
+gj_dataset = gj_dataset.drop(columns=['무효 투표수', '기권수'])
+
 # 하남
 
 hn_dataframe = pd.read_excel('C:\\Users\\wayma\\OneDrive\\문서\\GitHub\\2nd-Public-Data-Utilization-Contest-Preprocessing\\20vote\\지역구\\9경기\\개표상황(투표구별)_하남시.xlsx')
@@ -94,6 +98,8 @@ hn_dataset = process_dataframe(hn_dataframe)
 hn_dataset.index = hn_dataset['읍면동명']
 
 hn_dataset = hn_dataset.drop(columns=['읍면동명'])
+
+hn_dataset = hn_dataset.drop(columns=['무효 투표수', '기권수'])
 
 
 # 이천
@@ -105,6 +111,8 @@ ic_dataset = process_dataframe(ic_dataframe)
 ic_dataset.index = ic_dataset['읍면동명']
 
 ic_dataset = ic_dataset.drop(columns=['읍면동명'])
+
+ic_dataset = ic_dataset.drop(columns=['무효 투표수', '기권수'])
 
 # 의정부
 
@@ -123,6 +131,8 @@ ijb_dataset.index = ijb_dataset['읍면동명']
 
 ijb_dataset = ijb_dataset.drop(columns=['읍면동명'])
 
+ijb_dataset = ijb_dataset.drop(columns=['무효 투표수', '기권수'])
+
 
 # 양주
 
@@ -133,6 +143,9 @@ yj_dataset = process_dataframe(yj_dataframe)
 yj_dataset.index = yj_dataset['읍면동명']
 
 yj_dataset = yj_dataset.drop(columns=['읍면동명'])
+
+yj_dataset = yj_dataset.drop(columns=['무효 투표수', '기권수'])
+
 
 
 # save to csv
