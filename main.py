@@ -54,8 +54,8 @@ def process_dataframe(df: DataFrame) -> DataFrame:
   return df_dataset
 
 # 구로
-gr_gab = pd.read_excel('./data/지역구/1서울/개표상황(투표구별)_구로구갑.xlsx')
-gr_uel = pd.read_excel('./data/지역구/1서울/개표상황(투표구별)_구로구을.xlsx')
+gr_gab = pd.read_excel('C:\\Users\\wayma\\OneDrive\\문서\\GitHub\\2nd-Public-Data-Utilization-Contest-Preprocessing\\20vote\\지역구\\1서울\\개표상황(투표구별)_구로구갑.xlsx')
+gr_uel = pd.read_excel('C:\\Users\\wayma\\OneDrive\\문서\\GitHub\\2nd-Public-Data-Utilization-Contest-Preprocessing\\20vote\\지역구\\1서울\\개표상황(투표구별)_구로구을.xlsx')
 
 gr_gab_dataset = process_dataframe(gr_gab)
 gr_uel_dataset = process_dataframe(gr_uel)
@@ -70,8 +70,8 @@ gr_dataset.index = gr_dataset['읍면동명']
 gr_dataset = gr_dataset.drop(columns=['읍면동명'])
 
 # 광주
-gj_gab = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_광주시갑.xlsx')
-gj_uel = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_광주시을.xlsx')
+gj_gab = pd.read_excel('C:\\Users\\wayma\\OneDrive\\문서\\GitHub\\2nd-Public-Data-Utilization-Contest-Preprocessing\\20vote\\지역구\\9경기\\개표상황(투표구별)_광주시갑.xlsx')
+gj_uel = pd.read_excel('C:\\Users\\wayma\\OneDrive\\문서\\GitHub\\2nd-Public-Data-Utilization-Contest-Preprocessing\\20vote\\지역구\\9경기\\개표상황(투표구별)_광주시을.xlsx')
 
 gj_gab_dataset = process_dataframe(gj_gab)
 gj_uel_dataset = process_dataframe(gj_uel)
@@ -87,7 +87,7 @@ gj_dataset = gj_dataset.drop(columns=['읍면동명'])
 
 # 하남
 
-hn_dataframe = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_하남시.xlsx')
+hn_dataframe = pd.read_excel('C:\\Users\\wayma\\OneDrive\\문서\\GitHub\\2nd-Public-Data-Utilization-Contest-Preprocessing\\20vote\\지역구\\9경기\\개표상황(투표구별)_하남시.xlsx')
 
 hn_dataset = process_dataframe(hn_dataframe)
 
@@ -98,7 +98,7 @@ hn_dataset = hn_dataset.drop(columns=['읍면동명'])
 
 # 이천
 
-ic_dataframe = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_이천시.xlsx')
+ic_dataframe = pd.read_excel('C:\\Users\\wayma\\OneDrive\\문서\\GitHub\\2nd-Public-Data-Utilization-Contest-Preprocessing\\20vote\\지역구\\9경기\\개표상황(투표구별)_이천시.xlsx')
 
 ic_dataset = process_dataframe(ic_dataframe)
 
@@ -108,8 +108,8 @@ ic_dataset = ic_dataset.drop(columns=['읍면동명'])
 
 # 의정부
 
-ijb_gab = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_의정부시갑.xlsx')
-ijb_uel = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_의정부시을.xlsx')
+ijb_gab = pd.read_excel('C:\\Users\\wayma\\OneDrive\\문서\\GitHub\\2nd-Public-Data-Utilization-Contest-Preprocessing\\20vote\\지역구\\9경기\\개표상황(투표구별)_의정부시갑.xlsx')
+ijb_uel = pd.read_excel('C:\\Users\\wayma\\OneDrive\\문서\\GitHub\\2nd-Public-Data-Utilization-Contest-Preprocessing\\20vote\\지역구\\9경기\\개표상황(투표구별)_의정부시을.xlsx')
 
 ijb_gab_dataset = process_dataframe(ijb_gab)
 ijb_uel_dataset = process_dataframe(ijb_uel)
@@ -126,7 +126,7 @@ ijb_dataset = ijb_dataset.drop(columns=['읍면동명'])
 
 # 양주
 
-yj_dataframe = pd.read_excel('./data/지역구/9경기/개표상황(투표구별)_양주시.xlsx')
+yj_dataframe = pd.read_excel('C:\\Users\\wayma\\OneDrive\\문서\\GitHub\\2nd-Public-Data-Utilization-Contest-Preprocessing\\20vote\\지역구\\9경기\\개표상황(투표구별)_양주시.xlsx')
 
 yj_dataset = process_dataframe(yj_dataframe)
 
@@ -137,9 +137,9 @@ yj_dataset = yj_dataset.drop(columns=['읍면동명'])
 
 # save to csv
 
-gr_dataset.to_csv('./data/preprocessed/vote_guro.csv', encoding='utf-8-sig')
-gj_dataset.to_csv('./data/preprocessed/vote_gwangju.csv')
-hn_dataset.to_csv('./data/preprocessed/vote_hanam.csv')
-ic_dataset.to_csv('./data/preprocessed/vote_icheon.csv')
-ijb_dataset.to_csv('./data/preprocessed/vote_uijeongbu.csv')
-yj_dataset.to_csv('./data/preprocessed/vote_yangju.csv')
+gr_dataset.to_csv('C:\\Users\\wayma\\OneDrive\\문서\\GitHub\\2nd-Public-Data-Utilization-Contest-Preprocessing\\20vote\\preprocessed\\vote_guro.csv', encoding='utf-8-sig')
+gj_dataset.to_csv('C:\\Users\\wayma\\OneDrive\\문서\\GitHub\\2nd-Public-Data-Utilization-Contest-Preprocessing\\20vote\\preprocessed\\vote_gwangju.csv')
+hn_dataset.to_csv('C:\\Users\\wayma\\OneDrive\\문서\\GitHub\\2nd-Public-Data-Utilization-Contest-Preprocessing\\20vote\\preprocessed\\vote_hanam.csv')
+ic_dataset.to_csv('C:\\Users\\wayma\\OneDrive\\문서\\GitHub\\2nd-Public-Data-Utilization-Contest-Preprocessing\\20vote\\preprocessed\\vote_icheon.csv')
+ijb_dataset.to_csv('C:\\Users\\wayma\\OneDrive\\문서\\GitHub\\2nd-Public-Data-Utilization-Contest-Preprocessing\\20vote\\preprocessed\\vote_uijeongbu.csv')
+yj_dataset.to_csv('C:\\Users\\wayma\\OneDrive\\문서\\GitHub\\2nd-Public-Data-Utilization-Contest-Preprocessing\\20vote\\preprocessed\\vote_yangju.csv')
